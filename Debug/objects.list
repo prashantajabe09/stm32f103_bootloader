@@ -3,6 +3,7 @@
 "./Drivers/Src/System.o"
 "./Drivers/Src/UART.o"
 "./Drivers/Src/common.o"
+"./Drivers/Src/crc.o"
 "./Src/app.o"
 "./Src/main.o"
 "./Src/syscalls.o"

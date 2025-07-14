@@ -40,6 +40,8 @@
 #define CAN1_BASEADDR						0x40006400
 #define CAN2_BASEADDR						0x40006800
 #define SCB_BASEADDR						0xE000ED00
+#define CRC_BASEADDR						0x40023000
+
 
 #define EN	  1
 #define DI	  0
@@ -325,7 +327,13 @@ typedef struct{
 	uint32_t AFSR;
 }scb_regdef_t;
 
+typedef struct{
+	uint32_t DR;
+	uint32_t IDR;
+	uint32_t CR;
+}crc_regdef_t;
 
+#define CRC					((crc_regdef_t*)CRC_BASEADDR)
 #define SCB  				((scb_regdef_t*)SCB_BASEADDR)
 #define RCC					((rcc_regdef_t*)RCC_BASEADDR)
 #define GPIOA				((gpio_regdef_t*)GPIO_BASEADDR)
@@ -376,6 +384,6 @@ typedef struct{
 #include <UART.h>
 #include <Clk.h>
 #include <common.h>
-
+#include <crc.h>
 
 #endif /* INC_STM32F103X_H_ */

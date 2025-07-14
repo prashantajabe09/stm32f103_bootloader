@@ -1,0 +1,4 @@
+../Drivers/Src/crc.c:10:6:crc_reset	16	static
+../Drivers/Src/crc.c:15:6:crc_clock_en	4	static
+../Drivers/Src/crc.c:20:6:crc_clock_di	4	static
+../Drivers/Src/crc.c:26:10:crc_cal	32	static
