@@ -1,0 +1,11 @@
+../Drivers/Src/GPIO.c:28:16:io_port	1
+../Drivers/Src/GPIO.c:33:16:io_pin_bit	1
+../Drivers/Src/GPIO.c:38:6:delay	2
+../Drivers/Src/GPIO.c:99:6:io_interrupt_config	4
+../Drivers/Src/GPIO.c:124:6:io_init	2
+../Drivers/Src/GPIO.c:132:6:io_config	1
+../Drivers/Src/GPIO.c:137:6:io_set_io_mode	5
+../Drivers/Src/GPIO.c:167:6:io_set_out	3
+../Drivers/Src/GPIO.c:180:6:io_toggle	1
+../Drivers/Src/GPIO.c:186:10:io_get_in	1
+../Drivers/Src/GPIO.c:193:6:EXTI4_IRQHandler	3

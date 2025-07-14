@@ -1,0 +1,4 @@
+../Src/app.c:12:6:jump_to_user_app	1
+../Src/app.c:31:6:set_msp	1
+../Src/app.c:36:6:bootloader_read_uart_data	2
+../Src/app.c:60:9:bootloader_bl_get_ver_cmd	1

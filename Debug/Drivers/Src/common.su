@@ -1,0 +1,4 @@
+../Drivers/Src/common.c:9:6:mcu_init	8	static
+../Drivers/Src/common.c:23:10:round_off	32	static
+../Drivers/Src/common.c:42:6:print_msg	96	static
+../Drivers/Src/common.c:52:6:memory_set	32	static

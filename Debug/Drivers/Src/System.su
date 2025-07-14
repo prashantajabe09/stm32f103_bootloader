@@ -1,0 +1,4 @@
+../Drivers/Src/System.c:14:6:nvic_en_irq	24	static
+../Drivers/Src/System.c:21:6:systick_init	4	static
+../Drivers/Src/System.c:33:6:SysTick_Handler	4	static
+../Drivers/Src/System.c:41:10:get_systick	4	static

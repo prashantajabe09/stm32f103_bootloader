@@ -1,0 +1,13 @@
+../Drivers/Src/Clk.c:43:6:clock_init	1
+../Drivers/Src/Clk.c:79:9:system_clock_set	8
+../Drivers/Src/Clk.c:118:9:get_system_clock	1
+../Drivers/Src/Clk.c:139:9:pll_clk_config	1
+../Drivers/Src/Clk.c:160:6:ahb_clk_set	1
+../Drivers/Src/Clk.c:178:6:apb1_clk_set	1
+../Drivers/Src/Clk.c:198:6:apb2_clk_set	1
+../Drivers/Src/Clk.c:214:6:apb2_peripheral_clock_en	1
+../Drivers/Src/Clk.c:233:6:apb1_peripheral_clock_en	1
+../Drivers/Src/Clk.c:239:6:ahb_peripheral_clock_en	1
+../Drivers/Src/Clk.c:256:10:apb_get_clock	10
+../Drivers/Src/Clk.c:331:10:get_pll_clock	3
+../Drivers/Src/Clk.c:350:6:lsi_clock_en	2
