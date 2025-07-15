@@ -15,6 +15,7 @@ uint16_t rx_buffer_data_len = 0;
 uint8_t tc_buffer[80],tc_buffer_index;
 uint8_t txe_buffer[80],txe_buffer_index;
 usart_handle usart_2_handle;
+usart_handle usart_3_handle;
 uint16_t count_interrupt_enterred;
 uint16_t arr_length[6];
 uint16_t count_ovr;
@@ -28,20 +29,36 @@ uint16_t logic_counter5 = 0;
 
 static uart_callback_t callback_rx_data = 0;
 
-void uart_x_configure_parameter(usart_handle *p_usart_handle)
+void uart_2_configure_parameter(void)
 {
-	p_usart_handle->add_of_usartx = USART2;
-	//USART2Handle.Usart_Configuration.Mode = USART_MODE_TXRX;
-	p_usart_handle->usart_configuration.no_of_stop_bits = USART_STOPBITS_1;
-	p_usart_handle->usart_configuration.data_word_length = USART_WORDLEN_8BITS;
-	p_usart_handle->usart_configuration.baudrate = USART_STD_BAUD_9600;
-	p_usart_handle->usart_configuration.parity_control = USART_PARITY_DISABLE;
+	usart_2_handle.add_of_usartx = USART2;
+	usart_2_handle.usart_configuration.mode = USART_MODE_TXRX;
+	usart_2_handle.usart_configuration.no_of_stop_bits = USART_STOPBITS_1;
+	usart_2_handle.usart_configuration.data_word_length = USART_WORDLEN_8BITS;
+	usart_2_handle.usart_configuration.baudrate = USART_STD_BAUD_9600;
+	usart_2_handle.usart_configuration.parity_control = USART_PARITY_DISABLE;
 	//p_usart_handle->usart_configuration.dma_transmitter_en = USARTx_DMA_TRANSMITTER_EN;
 	//p_usart_handle->usart_configuration.dma_receiver_en = USARTx_DMA_RECEIVER_EN;
-	p_usart_handle->tx_buffer = &(tx_buffer_data[0]);
-	p_usart_handle->rx_buffer = &(rx_buffer_data[0]);
-	p_usart_handle->rx_len = 8;
+	usart_2_handle.tx_buffer = &(tx_buffer_data[0]);
+	usart_2_handle.rx_buffer = &(rx_buffer_data[0]);
+	usart_2_handle.rx_len = 8;
+	usart_init(&usart_2_handle);
+}
 
+void uart_3_configure_parameter(void)
+{
+	usart_3_handle.add_of_usartx = USART3;
+	usart_3_handle.usart_configuration.mode = USART_MODE_TXRX;
+	usart_3_handle.usart_configuration.no_of_stop_bits = USART_STOPBITS_1;
+	usart_3_handle.usart_configuration.data_word_length = USART_WORDLEN_8BITS;
+	usart_3_handle.usart_configuration.baudrate = USART_STD_BAUD_9600;
+	usart_3_handle.usart_configuration.parity_control = USART_PARITY_DISABLE;
+	//p_usart_handle->usart_configuration.dma_transmitter_en = USARTx_DMA_TRANSMITTER_EN;
+	//p_usart_handle->usart_configuration.dma_receiver_en = USARTx_DMA_RECEIVER_EN;
+	usart_3_handle.tx_buffer = &(tx_buffer_data[0]);
+	usart_3_handle.rx_buffer = &(rx_buffer_data[0]);
+	usart_3_handle.rx_len = 8;
+	usart_init(&usart_3_handle);
 }
 
 void usart_init(usart_handle *p_usart_handle)
@@ -52,7 +69,7 @@ void usart_init(usart_handle *p_usart_handle)
 
 	config_parity(p_usart_handle->add_of_usartx,p_usart_handle->usart_configuration.parity_control);
 
-	//config_mode(p_usart_handle->add_of_usartx,p_usart_handle->usart_configuration.mode);
+	config_mode(p_usart_handle->add_of_usartx,p_usart_handle->usart_configuration.mode);
 
 	usart_set_baudrate(p_usart_handle->add_of_usartx,p_usart_handle->usart_configuration.baudrate);
 
@@ -97,6 +114,12 @@ void usart_set_baudrate(usartx_regdef_t *p_usartx,uint32_t baudrate)
 	p_usartx->BRR |= div_fraction;
 }
 
+void uart_transmit(usart_handle *p_usart_handle,uint8_t* p_data, uint32_t len)
+{
+	p_usart_handle->tx_buffer = p_data;
+	p_usart_handle->tx_len = len;
+	usart_write_polling(p_usart_handle);
+}
 void uart_send_string(const char* s)
 {
 	usart_2_handle.tx_buffer = s;
@@ -112,8 +135,9 @@ void usart_write_polling(usart_handle *p_usart_handle)
 {
 
 	//p_usart_handle->tx_buffer = tx_buffer_data;
-	usart_tx_en(p_usart_handle->add_of_usartx);
-	while (*p_usart_handle->tx_buffer != '\0')
+	//usart_tx_en(p_usart_handle->add_of_usartx);
+	//while (*p_usart_handle->tx_buffer != '\0')
+	while ((p_usart_handle->tx_len)--)
 	{
 		// 8 bit data len
 		// 9 bit data len

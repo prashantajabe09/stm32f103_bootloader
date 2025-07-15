@@ -1,4 +1,6 @@
 ../Drivers/Src/common.c:9:6:mcu_init	1
-../Drivers/Src/common.c:23:10:round_off	3
-../Drivers/Src/common.c:42:6:print_msg	1
-../Drivers/Src/common.c:52:6:memory_set	2
+../Drivers/Src/common.c:21:10:round_off	3
+../Drivers/Src/common.c:40:6:print_msg	1
+../Drivers/Src/common.c:60:6:debug_msg	1
+../Drivers/Src/common.c:73:6:memory_set	2
+../Drivers/Src/common.c:83:9:str_len	2

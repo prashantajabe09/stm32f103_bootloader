@@ -1,4 +1,8 @@
 ../Src/app.c:12:6:jump_to_user_app	1
 ../Src/app.c:31:6:set_msp	1
 ../Src/app.c:36:6:bootloader_read_uart_data	2
-../Src/app.c:60:9:bootloader_bl_get_ver_cmd	1
+../Src/app.c:63:9:bootloader_check_crc	1
+../Src/app.c:68:9:bootloader_bl_get_ver_cmd	2
+../Src/app.c:88:6:bootloader_send_ack	1
+../Src/app.c:96:6:bootloader_send_nack	1
+../Src/app.c:102:9:get_bl_version	1

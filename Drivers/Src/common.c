@@ -11,10 +11,8 @@ void mcu_init(void)
 	clock_init();
 	io_init();
 
-	uart_x_configure_parameter(&usart_2_handle);
-	usart_init(&usart_2_handle);
-
-
+	uart_2_configure_parameter();
+	uart_3_configure_parameter();
 
 	systick_init();
 
@@ -41,12 +39,35 @@ uint32_t round_off(float number)
 
 void print_msg(char* format,...)
 {
+//	char str[80];
+//	va_list args;
+//	va_start(args,format);
+//	vsprintf(str,format,args);
+//	usart_2_handle.tx_buffer = &(str);
+//	usart_write_polling(&usart_2_handle);
+
 	char str[80];
+	uint8_t  length = 0;
+	memory_set(&str,'\0',80);
 	va_list args;
 	va_start(args,format);
 	vsprintf(str,format,args);
-	usart_2_handle.tx_buffer = &(str);
-	usart_write_polling(&usart_2_handle);
+	length = str_len(&str);
+	uart_transmit(usart_2_handle,&str,length);
+
+}
+
+void debug_msg(char* format,...)
+{
+	char str[80];
+	uint8_t length = 0;
+	memory_set(&str,'\0',80);
+	va_list args;
+	va_start(args,format);
+	vsprintf(str,format,args);
+	length = str_len(&str);
+	uart_transmit(usart_3_handle,&str,length);
+
 }
 
 void memory_set(void* ptr,int value, int num)
@@ -57,4 +78,12 @@ void memory_set(void* ptr,int value, int num)
 		*p++ = (unsigned int)value;
 	}
 
+}
+
+uint8_t str_len(uint8_t* p_data)
+{
+	uint8_t length;
+	while(*p_data++ != '\0')
+		++length;
+	return length;
 }

@@ -47,7 +47,7 @@ extern uint16_t count_ovr;
 
 
 typedef struct{
-	//uint8_t Mode; /*Tx or Rx or Both*/
+	uint8_t mode; /*Tx or Rx or Both*/
 	uint8_t data_word_length; /*8-bit long data or 9-bit long*/
 	uint8_t no_of_stop_bits;
 	uint32_t baudrate;
@@ -65,7 +65,7 @@ typedef struct{
 	uint8_t rx_len;
 }usart_handle;
 
-extern usart_handle usart_2_handle;
+extern usart_handle usart_2_handle,usart_3_handle;
 
 #define USART_FLAG_TXE 		(1 << USART_SR1_TXE)
 #define USART_FLAG_RXNE 	(1 << USART_SR1_RXNE)

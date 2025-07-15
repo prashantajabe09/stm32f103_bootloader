@@ -14,4 +14,5 @@ void mcu_init(void);
 uint32_t round_off(float number);
 void print_msg(char* format,...);
 void memory_set(void* ptr,int value, int num);
+uint8_t str_len(uint8_t* p_data);
 #endif /* INC_COMMON_H_ */

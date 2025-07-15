@@ -30,9 +30,17 @@
 #define BL_OTP_READ					0x5B
 #define BL_DIS_R_W_PROTECT			0x5C
 
+
+#define BL_ACK						0xA5
+#define BL_NACK						0x7F
+
+#define BL_VERSION					0x10
 extern uint8_t buffer[BUFF_SIZE];
 void jump_to_user_app(void);
 void set_msp(uint32_t msp_value);
 void bootloader_read_uart_data(void);
+uint8_t get_bl_version(void);
+void bootloader_send_nack(void);
+void bootloader_send_ack(uint32_t length);
 uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer);
 #endif /* APP_C_ */

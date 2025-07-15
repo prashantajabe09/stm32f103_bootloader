@@ -22,5 +22,6 @@
 void crc_reset(crc_regdef_t* p_crc);
 void crc_clock_en(void);
 void crc_clock_di(void);
-uint32_t crc_cal(crc_regdef_t* p_crc, uint32_t* p_data, uint32_t len);
+uint32_t crc_calculate(crc_regdef_t* p_crc, uint8_t* p_data, uint32_t len);
+uint8_t crc_check(crc_regdef_t* p_crc, uint8_t* p_data, uint32_t len,uint32_t received_crc);
 #endif /* INC_CRC_H_ */

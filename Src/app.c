@@ -46,6 +46,9 @@ void bootloader_read_uart_data(void)
 		{
 			case BL_GET_VER:
 				bootloader_bl_get_ver_cmd(buffer);
+				break;
+			default:
+
 		}
 	}
 	// This function will be called in infinite while loop.
@@ -57,9 +60,48 @@ void bootloader_read_uart_data(void)
 	// then implement the switch statement to implement the logic for that particular command.
 }
 
+uint8_t bootloader_check_crc(uint8_t* p_data,uint32_t len,uint32_t host_crc)
+{
+	return crc_check(CRC,p_data,len,host_crc);
+}
+
 uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer)
 {
+	uint8_t bl_version;
+	uint32_t command_packet_length  = buffer[0] + 1;
+	uint32_t host_crc = *(uint32_t*)(&buffer[0] + command_packet_length - 4);
+	if (bootloader_check_crc(&buffer[0],2,host_crc))
+	{
+		// send ack
+		bootloader_send_ack(1);
 
+		bl_version = get_bl_version();
+
+		uart_transmit(usart_2_handle,&bl_version,1);
+	}
+	else
+	{
+		bootloader_send_nack();
+	}
+}
+
+void bootloader_send_ack(uint32_t length)
+{
+	uint8_t temp_arr[2];
+	temp_arr[0] = BL_ACK;
+	temp_arr[1] = length;
+	uart_transmit(usart_2_handle,&temp_arr,2);
+}
+
+void bootloader_send_nack(void)
+{
+	uint8_t temp_var = BL_NACK;
+	uart_transmit(usart_2_handle,&temp_var,1);
+}
+
+uint8_t get_bl_version(void)
+{
+	return BL_VERSION;
 }
 // handle_X_command()
 // check CRC, if match then send ACK --> obtain the reply --> send reply.
