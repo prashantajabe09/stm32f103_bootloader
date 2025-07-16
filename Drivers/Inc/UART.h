@@ -151,6 +151,7 @@ extern usart_handle usart_2_handle,usart_3_handle;
 
 typedef void (*uart_callback_t)(uint8_t* rx_data);
 
+void uart_transmit(usart_handle *p_usart_handle,uint8_t* p_data, uint8_t len);
 void register_uart_callback(uart_callback_t callback);
 void uart_x_configure_parameter(usart_handle *p_usart_handle);
 void usart_init(usart_handle *p_usart_handle);

@@ -8,6 +8,31 @@
 
 #include "app.h"
 
+uint32_t bl_counter1 = 0;
+uint32_t bl_counter2 = 0;
+uint32_t bl_counter3 = 0;
+uint32_t bl_counter4 = 0;
+uint32_t bl_counter5 = 0;
+uint32_t bl_counter6 = 0;
+uint32_t bl_counter7 = 0;
+uint32_t bl_counter8 = 0;
+uint32_t bl_counter9 = 0;
+uint32_t bl_counter10 = 0;
+
+uint8_t supported_cmd[] = {
+		BL_GET_VER,
+		BL_GET_HELP,
+		BL_GET_CID,
+		BL_GET_RDP_STATUS,
+		BL_GO_TO_ADDR,
+		BL_FLASH_ERASE,
+		BL_MEM_WRITE,
+		BL_EN_R_W_PROTECT,
+		BL_MEM_READ,
+		BL_READ_SECTOR_STATUS,
+		BL_OTP_READ,
+		BL_DIS_R_W_PROTECT
+};
 uint8_t buffer[BUFF_SIZE];
 void jump_to_user_app(void)
 {
@@ -38,8 +63,8 @@ void bootloader_read_uart_data(void)
 	uint8_t receive_length = 0;
 	while(1)
 	{
-		memoey_set(buffer,0,BUFF_SIZE);
-		usart_read(&usart_2_handle,buffer[0],1,1000);
+		memory_set(buffer,0,BUFF_SIZE);
+		usart_read(&usart_2_handle,&buffer[0],1,1000);
 		receive_length = buffer[0];
 		usart_read(&usart_2_handle,&buffer[1],receive_length,1000);
 		switch(buffer[1])
@@ -70,6 +95,7 @@ uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer)
 	uint8_t bl_version;
 	uint32_t command_packet_length  = buffer[0] + 1;
 	uint32_t host_crc = *(uint32_t*)(&buffer[0] + command_packet_length - 4);
+	//print_msg("host_crc: %d \r\n",host_crc);
 	if (bootloader_check_crc(&buffer[0],2,host_crc))
 	{
 		// send ack
@@ -77,7 +103,7 @@ uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer)
 
 		bl_version = get_bl_version();
 
-		uart_transmit(usart_2_handle,&bl_version,1);
+		uart_transmit(&usart_2_handle,&bl_version,1);
 	}
 	else
 	{
@@ -85,18 +111,22 @@ uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer)
 	}
 }
 
+uint8_t bootloader_bl_get_help_cmd(uint8_t* buffer)
+{
+
+}
 void bootloader_send_ack(uint32_t length)
 {
 	uint8_t temp_arr[2];
 	temp_arr[0] = BL_ACK;
-	temp_arr[1] = length;
-	uart_transmit(usart_2_handle,&temp_arr,2);
+	temp_arr[1] = (uint8_t)length;
+	uart_transmit(&usart_2_handle,&temp_arr,2);
 }
 
 void bootloader_send_nack(void)
 {
 	uint8_t temp_var = BL_NACK;
-	uart_transmit(usart_2_handle,&temp_var,1);
+	uart_transmit(&usart_2_handle,&temp_var,1);
 }
 
 uint8_t get_bl_version(void)

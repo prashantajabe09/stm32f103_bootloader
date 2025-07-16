@@ -41,4 +41,5 @@ extern uint16_t counter_data_transmit;
 extern uint16_t counter_led_toggle;
 extern uint32_t counter_systick;
 extern uint8_t spi_dma_based_write_complete;
+extern uint32_t bl_counter1,bl_counter2,bl_counter3,bl_counter4,bl_counter5,bl_counter6,bl_counter7,bl_counter8,bl_counter9,bl_counter10;
 #endif /* INC_GLOBAL_H_ */

@@ -43,7 +43,7 @@ uint8_t crc_check(crc_regdef_t* p_crc, uint8_t* p_data, uint32_t len,uint32_t re
 	crc_reset(p_crc);
 
 	calculated_crc = crc_calculate(p_crc,p_data,len);
-
+	//print_msg("cal_crc: %d \r\n",calculated_crc);
 	crc_clock_di();
 
 	return (calculated_crc == received_crc);

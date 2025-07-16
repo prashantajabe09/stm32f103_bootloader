@@ -1,8 +1,9 @@
-../Src/app.c:12:6:jump_to_user_app	24	static
-../Src/app.c:31:6:set_msp	16	static,ignoring_inline_asm
-../Src/app.c:36:6:bootloader_read_uart_data	16	static
-../Src/app.c:63:9:bootloader_check_crc	24	static
-../Src/app.c:68:9:bootloader_bl_get_ver_cmd	64	static
-../Src/app.c:88:6:bootloader_send_ack	56	static
-../Src/app.c:96:6:bootloader_send_nack	48	static
-../Src/app.c:102:9:get_bl_version	4	static
+../Src/app.c:37:6:jump_to_user_app	24	static
+../Src/app.c:56:6:set_msp	16	static,ignoring_inline_asm
+../Src/app.c:61:6:bootloader_read_uart_data	16	static
+../Src/app.c:88:9:bootloader_check_crc	24	static
+../Src/app.c:93:9:bootloader_bl_get_ver_cmd	32	static
+../Src/app.c:114:9:bootloader_bl_get_help_cmd	16	static
+../Src/app.c:118:6:bootloader_send_ack	24	static
+../Src/app.c:126:6:bootloader_send_nack	16	static
+../Src/app.c:132:9:get_bl_version	4	static

@@ -53,7 +53,7 @@ void print_msg(char* format,...)
 	va_start(args,format);
 	vsprintf(str,format,args);
 	length = str_len(&str);
-	uart_transmit(usart_2_handle,&str,length);
+	uart_transmit(&usart_2_handle,&str,length);
 
 }
 
@@ -66,7 +66,7 @@ void debug_msg(char* format,...)
 	va_start(args,format);
 	vsprintf(str,format,args);
 	length = str_len(&str);
-	uart_transmit(usart_3_handle,&str,length);
+	uart_transmit(&usart_3_handle,&str,length);
 
 }
 
@@ -82,7 +82,7 @@ void memory_set(void* ptr,int value, int num)
 
 uint8_t str_len(uint8_t* p_data)
 {
-	uint8_t length;
+	uint8_t length = 0;
 	while(*p_data++ != '\0')
 		++length;
 	return length;

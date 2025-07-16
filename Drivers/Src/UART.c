@@ -35,7 +35,7 @@ void uart_2_configure_parameter(void)
 	usart_2_handle.usart_configuration.mode = USART_MODE_TXRX;
 	usart_2_handle.usart_configuration.no_of_stop_bits = USART_STOPBITS_1;
 	usart_2_handle.usart_configuration.data_word_length = USART_WORDLEN_8BITS;
-	usart_2_handle.usart_configuration.baudrate = USART_STD_BAUD_9600;
+	usart_2_handle.usart_configuration.baudrate = USART_STD_BAUD_115200;
 	usart_2_handle.usart_configuration.parity_control = USART_PARITY_DISABLE;
 	//p_usart_handle->usart_configuration.dma_transmitter_en = USARTx_DMA_TRANSMITTER_EN;
 	//p_usart_handle->usart_configuration.dma_receiver_en = USARTx_DMA_RECEIVER_EN;
@@ -51,7 +51,7 @@ void uart_3_configure_parameter(void)
 	usart_3_handle.usart_configuration.mode = USART_MODE_TXRX;
 	usart_3_handle.usart_configuration.no_of_stop_bits = USART_STOPBITS_1;
 	usart_3_handle.usart_configuration.data_word_length = USART_WORDLEN_8BITS;
-	usart_3_handle.usart_configuration.baudrate = USART_STD_BAUD_9600;
+	usart_3_handle.usart_configuration.baudrate = USART_STD_BAUD_115200;
 	usart_3_handle.usart_configuration.parity_control = USART_PARITY_DISABLE;
 	//p_usart_handle->usart_configuration.dma_transmitter_en = USARTx_DMA_TRANSMITTER_EN;
 	//p_usart_handle->usart_configuration.dma_receiver_en = USARTx_DMA_RECEIVER_EN;
@@ -114,7 +114,7 @@ void usart_set_baudrate(usartx_regdef_t *p_usartx,uint32_t baudrate)
 	p_usartx->BRR |= div_fraction;
 }
 
-void uart_transmit(usart_handle *p_usart_handle,uint8_t* p_data, uint32_t len)
+void uart_transmit(usart_handle *p_usart_handle,uint8_t* p_data, uint8_t len)
 {
 	p_usart_handle->tx_buffer = p_data;
 	p_usart_handle->tx_len = len;
@@ -175,7 +175,7 @@ void usart_write_polling(usart_handle *p_usart_handle)
 	}
 	// Wait till TC Got completed
 	while (get_flag_status(p_usart_handle->add_of_usartx,USART_FLAG_TC) != 1);
-	usart_tx_di(p_usart_handle->add_of_usartx);
+	//usart_tx_di(p_usart_handle->add_of_usartx);
 }
 
 void usart_read(usart_handle *p_usart_handle, uint8_t *p_data, uint16_t length,uint32_t timeout)

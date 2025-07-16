@@ -34,8 +34,9 @@
 #define BL_ACK						0xA5
 #define BL_NACK						0x7F
 
-#define BL_VERSION					0x10
+#define BL_VERSION					0x50
 extern uint8_t buffer[BUFF_SIZE];
+
 void jump_to_user_app(void);
 void set_msp(uint32_t msp_value);
 void bootloader_read_uart_data(void);

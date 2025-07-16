@@ -1,8 +1,9 @@
-../Src/app.c:12:6:jump_to_user_app	1
-../Src/app.c:31:6:set_msp	1
-../Src/app.c:36:6:bootloader_read_uart_data	2
-../Src/app.c:63:9:bootloader_check_crc	1
-../Src/app.c:68:9:bootloader_bl_get_ver_cmd	2
-../Src/app.c:88:6:bootloader_send_ack	1
-../Src/app.c:96:6:bootloader_send_nack	1
-../Src/app.c:102:9:get_bl_version	1
+../Src/app.c:37:6:jump_to_user_app	1
+../Src/app.c:56:6:set_msp	1
+../Src/app.c:61:6:bootloader_read_uart_data	2
+../Src/app.c:88:9:bootloader_check_crc	1
+../Src/app.c:93:9:bootloader_bl_get_ver_cmd	2
+../Src/app.c:114:9:bootloader_bl_get_help_cmd	1
+../Src/app.c:118:6:bootloader_send_ack	1
+../Src/app.c:126:6:bootloader_send_nack	1
+../Src/app.c:132:9:get_bl_version	1
