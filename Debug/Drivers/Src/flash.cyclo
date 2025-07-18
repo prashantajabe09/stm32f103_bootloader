@@ -1,0 +1,3 @@
+../Drivers/Src/flash.c:10:9:flash_sector_erase	3
+../Drivers/Src/flash.c:27:6:flash_unlock	1
+../Drivers/Src/flash.c:33:6:flash_lock	1

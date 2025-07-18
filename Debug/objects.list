@@ -4,6 +4,7 @@
 "./Drivers/Src/UART.o"
 "./Drivers/Src/common.o"
 "./Drivers/Src/crc.o"
+"./Drivers/Src/flash.o"
 "./Src/app.o"
 "./Src/main.o"
 "./Src/syscalls.o"

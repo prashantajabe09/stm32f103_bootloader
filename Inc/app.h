@@ -34,14 +34,25 @@
 #define BL_ACK						0xA5
 #define BL_NACK						0x7F
 
+#define ADDR_VALID					0x00
+#define ADDR_INVALID				0x01
+
 #define BL_VERSION					0x50
 extern uint8_t buffer[BUFF_SIZE];
 
+
+
 void jump_to_user_app(void);
 void set_msp(uint32_t msp_value);
-void bootloader_read_uart_data(void);
+void bl_read_uart_data(void);
 uint8_t get_bl_version(void);
-void bootloader_send_nack(void);
-void bootloader_send_ack(uint32_t length);
-uint8_t bootloader_bl_get_ver_cmd(uint8_t* buffer);
+void bl_send_nack(void);
+void bl_send_ack(uint32_t length);
+uint8_t get_rdp(void);
+uint8_t bl_check_crc(uint8_t* p_data,uint32_t len,uint32_t host_crc);
+uint8_t is_add_valid(uint32_t addr);
+void bl_get_ver_cmd(uint8_t* buffer);
+void bl_get_help_cmd(uint8_t* buffer);
+void bl_get_cid_cmd(uint8_t* buffer);
+void bl_get_flash_rdp(uint8_t* buffer);
 #endif /* APP_C_ */

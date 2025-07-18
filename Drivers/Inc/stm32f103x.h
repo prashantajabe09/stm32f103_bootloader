@@ -42,7 +42,10 @@
 #define SCB_BASEADDR						0xE000ED00
 #define CRC_BASEADDR						0x40023000
 
-
+#define FLASH_BASEADDR						0x08000000
+#define FLASH_PAGE_SIZE						0x400
+#define FLASH_SIZE							0x1FFFF
+#define FLASH_END							(FLASH_BASEADDR + FLASH_SIZE)
 #define EN	  1
 #define DI	  0
 
@@ -333,6 +336,17 @@ typedef struct{
 	uint32_t CR;
 }crc_regdef_t;
 
+typedef struct{
+	uint32_t ACR;
+	uint32_t KEYR;
+	uint32_t OPTKEYR;
+	uint32_t SR;
+	uint32_t CR;
+	uint32_t AR;
+	uint32_t OBR;
+	uint32_t WRPR;
+
+}flash_regdef_t;
 #define CRC					((crc_regdef_t*)CRC_BASEADDR)
 #define SCB  				((scb_regdef_t*)SCB_BASEADDR)
 #define RCC					((rcc_regdef_t*)RCC_BASEADDR)
@@ -368,6 +382,10 @@ typedef struct{
 #define NVIC_ICER0			((uint32_t*)(0xE000E100 + 0x18))
 #define NVIC_ICER1			((uint32_t*)(0xE000E100 + 0x1C))
 #define NVIC_ICER2			((uint32_t*)(0xE000E100 + 0x80))
+#define FLASH_MEMORY_INTERFACE ((flash_regdef_t*)(0x40022000))
+
+#define DBGMCU_IDCODE	    *((uint32_t*)( 0xE0042000))
+
 #define GPIOA_CLK		(1 << 2)
 #define GPIOC_CLK		(1 << 4)
 #define TIMER1_CLK		(1 << 11)
@@ -385,5 +403,5 @@ typedef struct{
 #include <Clk.h>
 #include <common.h>
 #include <crc.h>
-
+#include <flash.h>
 #endif /* INC_STM32F103X_H_ */

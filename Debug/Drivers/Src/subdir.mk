@@ -10,7 +10,8 @@ C_SRCS += \
 ../Drivers/Src/System.c \
 ../Drivers/Src/UART.c \
 ../Drivers/Src/common.c \
-../Drivers/Src/crc.c 
+../Drivers/Src/crc.c \
+../Drivers/Src/flash.c 
 
 OBJS += \
 ./Drivers/Src/Clk.o \
@@ -18,7 +19,8 @@ OBJS += \
 ./Drivers/Src/System.o \
 ./Drivers/Src/UART.o \
 ./Drivers/Src/common.o \
-./Drivers/Src/crc.o 
+./Drivers/Src/crc.o \
+./Drivers/Src/flash.o 
 
 C_DEPS += \
 ./Drivers/Src/Clk.d \
@@ -26,7 +28,8 @@ C_DEPS += \
 ./Drivers/Src/System.d \
 ./Drivers/Src/UART.d \
 ./Drivers/Src/common.d \
-./Drivers/Src/crc.d 
+./Drivers/Src/crc.d \
+./Drivers/Src/flash.d 
 
 
 # Each subdirectory must supply rules for building sources it contributes
@@ -36,7 +39,7 @@ Drivers/Src/%.o Drivers/Src/%.su Drivers/Src/%.cyclo: ../Drivers/Src/%.c Drivers
 clean: clean-Drivers-2f-Src
 
 clean-Drivers-2f-Src:
-	-$(RM) ./Drivers/Src/Clk.cyclo ./Drivers/Src/Clk.d ./Drivers/Src/Clk.o ./Drivers/Src/Clk.su ./Drivers/Src/GPIO.cyclo ./Drivers/Src/GPIO.d ./Drivers/Src/GPIO.o ./Drivers/Src/GPIO.su ./Drivers/Src/System.cyclo ./Drivers/Src/System.d ./Drivers/Src/System.o ./Drivers/Src/System.su ./Drivers/Src/UART.cyclo ./Drivers/Src/UART.d ./Drivers/Src/UART.o ./Drivers/Src/UART.su ./Drivers/Src/common.cyclo ./Drivers/Src/common.d ./Drivers/Src/common.o ./Drivers/Src/common.su ./Drivers/Src/crc.cyclo ./Drivers/Src/crc.d ./Drivers/Src/crc.o ./Drivers/Src/crc.su
+	-$(RM) ./Drivers/Src/Clk.cyclo ./Drivers/Src/Clk.d ./Drivers/Src/Clk.o ./Drivers/Src/Clk.su ./Drivers/Src/GPIO.cyclo ./Drivers/Src/GPIO.d ./Drivers/Src/GPIO.o ./Drivers/Src/GPIO.su ./Drivers/Src/System.cyclo ./Drivers/Src/System.d ./Drivers/Src/System.o ./Drivers/Src/System.su ./Drivers/Src/UART.cyclo ./Drivers/Src/UART.d ./Drivers/Src/UART.o ./Drivers/Src/UART.su ./Drivers/Src/common.cyclo ./Drivers/Src/common.d ./Drivers/Src/common.o ./Drivers/Src/common.su ./Drivers/Src/crc.cyclo ./Drivers/Src/crc.d ./Drivers/Src/crc.o ./Drivers/Src/crc.su ./Drivers/Src/flash.cyclo ./Drivers/Src/flash.d ./Drivers/Src/flash.o ./Drivers/Src/flash.su
 
 .PHONY: clean-Drivers-2f-Src
 

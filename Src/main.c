@@ -44,7 +44,7 @@ int main(void)
 		if (io_get_in(PUSH_BUTTON) == GPIO_PIN_RESET)
 		{
 			//print_msg("Welcome to Bootloader \r\n");
-			bootloader_read_uart_data();
+			bl_read_uart_data();
 			for (uint32_t i = 0; i < 100000;i++);
 		}
 		else
