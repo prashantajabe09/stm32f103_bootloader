@@ -142,5 +142,6 @@ SECTOR_127,
 
 uint8_t flash_sector_erase(sector_e sector_no);
 void flash_unlock(void);
+uint8_t flash_mass_erase(void);
 
 #endif /* INC_FLASH_H_ */

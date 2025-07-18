@@ -34,3 +34,19 @@ void flash_lock(void)
 {
 	FLASH->CR |= (1 << 7);
 }
+
+uint8_t flash_mass_erase(void)
+{
+	if (FLASH->SR & 0x01)
+	{
+		return FLASH_BUSY;
+	}
+	else
+	{
+		flash_unlock();
+		FLASH->CR |= (1 << 2); /* start page erase */
+		FLASH->CR |= (1 << 6); /* start page erase */
+		while (FLASH->SR & 0x01);
+		return FLASH_ERASE_SUCCESS;
+	}
+}

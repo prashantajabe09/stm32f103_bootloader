@@ -1,3 +1,4 @@
 ../Drivers/Src/flash.c:10:9:flash_sector_erase	24	static
 ../Drivers/Src/flash.c:27:6:flash_unlock	4	static
 ../Drivers/Src/flash.c:33:6:flash_lock	4	static
+../Drivers/Src/flash.c:38:9:flash_mass_erase	8	static
