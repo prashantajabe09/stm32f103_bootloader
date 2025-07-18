@@ -217,7 +217,7 @@ void bl_flash_erase(uint8_t* buffer)
 	if (bl_check_crc(&buffer[0],(command_packet_length - 4),host_crc))
 	{
 		bl_send_ack(1);
-		flash_erase_status = flash_mass_erase();
+		flash_erase_status = flash_sector_erase();
 		uart_transmit(&usart_2_handle,&flash_erase_status,1);
 	}
 	else
