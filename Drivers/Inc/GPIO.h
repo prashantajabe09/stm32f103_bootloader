@@ -157,6 +157,6 @@ void io_set_out(io_e io, io_out_e out);
 uint16_t io_get_in(io_e io);
 void io_interrupt_config(exti_configuration *config); // pass the structure
 void io_toggle(io_e io);
-void delay();
+
 
 #endif /* INC_GPIO_H_ */

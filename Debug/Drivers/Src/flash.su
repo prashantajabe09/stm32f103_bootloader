@@ -1,4 +1,10 @@
-../Drivers/Src/flash.c:10:9:flash_sector_erase	24	static
-../Drivers/Src/flash.c:27:6:flash_unlock	4	static
-../Drivers/Src/flash.c:33:6:flash_lock	4	static
-../Drivers/Src/flash.c:38:9:flash_mass_erase	8	static
+../Drivers/Src/flash.c:23:9:flash_sector_erase	24	static
+../Drivers/Src/flash.c:54:6:flash_unlock	4	static
+../Drivers/Src/flash.c:70:6:op_byte_unlock	4	static
+../Drivers/Src/flash.c:87:9:is_flash_memory_write_protected	4	static
+../Drivers/Src/flash.c:105:6:flash_lock	4	static
+../Drivers/Src/flash.c:120:9:flash_mass_erase	8	static
+../Drivers/Src/flash.c:150:9:flash_mem_write	24	static
+../Drivers/Src/flash.c:191:6:option_byte_read	16	static
+../Drivers/Src/flash.c:210:9:option_byte_erase	16	static
+../Drivers/Src/flash.c:252:6:option_byte_write	40	static

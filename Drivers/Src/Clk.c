@@ -256,7 +256,7 @@ void ahb_peripheral_clock_en(uint32_t clock_en_parameter)
 uint32_t apb_get_clock(uint8_t apb)
 {
 	uint8_t clock_source;
-	uint32_t sysclk, temp,temp2, ahbp, apbp;
+	uint32_t sysclk, temp, ahbp, apbp;
 
 	clock_source = ((RCC->CFGR >> 2) & 0x03);
 	if (clock_source == SYSCLK_SOURCE_HSI)

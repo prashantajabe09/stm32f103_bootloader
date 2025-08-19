@@ -10,15 +10,35 @@
 
 #include "stm32f103x.h"
 
-#define FLASH		FLASH_MEMORY_INTERFACE
-#define RDPRT_KEY	0x00A5
-#define KEY_1		0x45670123
-#define KEY_2   	0xCDEF89AB
+#define FLASH								FLASH_MEMORY_INTERFACE
 
+#define FLASH_BASE_ADDR						0x08000000
+#define FLASH_END_ADDR						0x0801FFFF
 
-#define FLASH_BUSY	1
-#define FLASH_NOT_BUSY 0
+#define RDPRT_KEY							0x00A5
+
+#define KEY_1								0x45670123
+#define KEY_2   							0xCDEF89AB
+
+#define OP_BYTE_BASE_ADDR		    		0x1FFFF800
+#define OP_BYTE_DATA_REG_ADDR				0x1FFFF804
+#define OP_BYTE_WRP_0_1_REG_ADDR    		0x1FFFF808
+#define OP_BYTE_WRP_2_3_REG_ADDR			0x1FFFF80C
+
+#define FLASH_MEMORY_WRITE_PROTECTED		1
+#define FLASH_MEMORY_NOT_WRITE_PROTECTED	0
+
+#define OP_BYTE_ERASE_FAILED  				1
+#define OP_BYTE_ERASE_SUCCESS 				0
+
+#define WRITE_SUCCESS 						1
+#define WRITE_FAILED						0
+#define FLASH_BUSY							1
+#define FLASH_NOT_BUSY 						0
 #define FLASH_ERASE_SUCCESS 2
+
+#define OPTION_BYTE_ADDRESS					1
+#define NOT_OPTION_BYTE_ADDRESS				0
 typedef enum{
 SECTOR_0 = 0,
 SECTOR_1,
@@ -140,8 +160,16 @@ SECTOR_126,
 SECTOR_127,
 }sector_e;
 
+extern uint32_t option_byte_info[4];
+
 uint8_t flash_sector_erase(sector_e sector_no);
 void flash_unlock(void);
+void flash_lock(void);
 uint8_t flash_mass_erase(void);
-
+uint8_t flash_mem_write(uint16_t data, uint32_t address);
+uint8_t is_flash_memory_write_protected(void);
+void option_byte_read(void);
+void op_byte_unlock(void);
+uint8_t option_byte_erase(void);
+void option_byte_write(uint32_t base_addr,uint8_t* p_data);
 #endif /* INC_FLASH_H_ */

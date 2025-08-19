@@ -2,3 +2,4 @@
 ../Drivers/Src/System.c:21:6:systick_init	1
 ../Drivers/Src/System.c:33:6:SysTick_Handler	1
 ../Drivers/Src/System.c:41:10:get_systick	1
+../Drivers/Src/System.c:46:6:system_reset	1

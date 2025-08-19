@@ -35,12 +35,7 @@ static uint8_t io_pin_bit(gpio_pins io)
     return io & IO_PIN_MASK;
 }
 
-void delay()
-{
-	uint32_t i = 0;
-	for (i = 0; i <10000; i++);
 
-}
 // TO DO: Configure the pins as you progress the code. Next configue for the UART then I2C.
 io_configuration io_initial_config[PORTS * PINS_PER_PORT] = {
 													  [P0_0] = {MODE_IO_DIR_INPUT,CONFIG_ANALOG_MODE,NO_PUPD},

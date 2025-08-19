@@ -343,6 +343,7 @@ typedef struct{
 	uint32_t SR;
 	uint32_t CR;
 	uint32_t AR;
+	uint32_t reserved1;
 	uint32_t OBR;
 	uint32_t WRPR;
 

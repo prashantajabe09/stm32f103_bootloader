@@ -178,7 +178,7 @@ void usart_write_polling(usart_handle *p_usart_handle)
 	//usart_tx_di(p_usart_handle->add_of_usartx);
 }
 
-void usart_read(usart_handle *p_usart_handle, uint8_t *p_data, uint16_t length,uint32_t timeout)
+uint8_t usart_read(usart_handle *p_usart_handle, uint8_t *p_data, uint16_t length,uint32_t timeout)
 {
 	uint32_t start = get_systick();
 	while ( ((get_systick() - start) < timeout) && length > 0 )
@@ -221,8 +221,14 @@ void usart_read(usart_handle *p_usart_handle, uint8_t *p_data, uint16_t length,u
 					}
 				}
 			}
+
 		}
 	}
+	if (length == 0)
+	{
+		return USART_READ_OK;
+	}
+	return length;
 }
 
 void usart_en(usartx_regdef_t* p_usartx)

@@ -17,6 +17,7 @@
  */
 
 #include <stdint.h>
+
 #include "app.h"
 //#include "stm32f103x.h"
 
@@ -31,7 +32,7 @@
 
 
 
-void jump_to_user_app(void);
+
 void set_msp(uint32_t msp_value);
 int main(void)
 {
@@ -43,13 +44,13 @@ int main(void)
 	{
 		if (io_get_in(PUSH_BUTTON) == GPIO_PIN_RESET)
 		{
-			//print_msg("Welcome to Bootloader \r\n");
 			bl_read_uart_data();
-			for (uint32_t i = 0; i < 100000;i++);
+			delay(100);
 		}
 		else
 		{
-			jump_to_user_app();
+			uint32_t user_app_address = (uint32_t)USER_APP_FLASH_BASE_ADDR;
+			jump_to_user_app(user_app_address);
 		}
 	}
 }

@@ -42,3 +42,9 @@ uint32_t get_systick(void)
 {
 	return counter_systick;
 }
+
+void system_reset(void)
+{
+	SCB->AIRCR |= (0x5FA << 16) | (1 << 2);  // VECTKEY + SYSRESETREQ
+    while (1); // Wait for reset to happen
+}

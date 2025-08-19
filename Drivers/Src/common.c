@@ -36,7 +36,11 @@ uint32_t round_off(float number)
 	return (realPart + (uint32_t)carry);
 }
 
-
+void delay(uint32_t time_in_ms)
+{
+	uint32_t start_tick = get_systick();
+	while ((get_systick() - start_tick) <= time_in_ms);
+}
 void print_msg(char* format,...)
 {
 //	char str[80];
@@ -86,4 +90,12 @@ uint8_t str_len(uint8_t* p_data)
 	while(*p_data++ != '\0')
 		++length;
 	return length;
+}
+
+//Converts uint32t_t value to series of bytes.
+//if "lowerfirst" is 1 , then LSB is returned first (not used)
+uint8_t word_to_byte(uint32_t addr, uint8_t index, uint8_t lowerfirst)
+{
+      uint8_t value = (addr >> ( 8 * ( index -1)) & 0x000000FF );
+      return value;
 }
